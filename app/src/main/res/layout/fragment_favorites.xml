@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:gravity="top"
+        android:background="@color/colorPrimary"
+        android:layout_height="48dp">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabsHistoryAndFavorites"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginStart="48dp"
+            android:background="@android:color/transparent"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/colorBlack"
+            app:tabMode="fixed"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
+
+        </android.support.design.widget.TabLayout>
+
+        <ImageButton
+            android:id="@+id/buttonClearHistory"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            app:srcCompat="@drawable/ic_trash"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/clear"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editTextSearch"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="@string/searchInHistory"
+        android:drawablePadding="@dimen/padding"
+        android:paddingStart="@dimen/padding"
+        android:paddingEnd="@dimen/padding"
+        android:inputType="text"
+        android:drawable="@drawable/ic_search"
+        android:textSize="16sp"
+        android:background="@drawable/background_search"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/historyAndFavoritesList"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:layout_marginTop="@dimen/margin"
+        android:focusableInTouchMode="true"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

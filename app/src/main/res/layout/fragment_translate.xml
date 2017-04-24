@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/tabChoiceLanguage"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/textViewLanguageFrom"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_gravity="start"
+            android:gravity="end|center_vertical"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/defaultLanguageFrom" />
+
+        <ImageButton
+            android:id="@+id/buttonSwitchDirection"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@string/switchDirection"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_switch"/>
+
+        <TextView
+            android:id="@+id/textViewLanguageTo"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_gravity="end"
+            android:gravity="start|center_vertical"
+            android:paddingStart="@dimen/padding"
+            android:paddingEnd="@dimen/padding"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:text="@string/defaultLanguageTo" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:id="@+id/textEditInputText"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_margin="@dimen/margin"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/padding"
+            android:gravity="top"
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/background_edit_text"
+            android:hint="@string/exampleWord" />
+
+        <ImageButton
+            android:id="@+id/buttonClearText"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginBottom="22dp"
+            android:layout_gravity="bottom"
+            android:background="#00ffffff"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@drawable/ic_clear" />
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/margin">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewTranslatedText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:focusable="true"
+                    android:textSize="16sp"
+                    android:focusableInTouchMode="true"/>
+
+                <TextView
+                    android:id="@+id/textViewDictionaryEntry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:textSize="14sp"
+                    android:focusableInTouchMode="true"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/leftpanel"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="vertical"
+            android:layout_width="32dp"
+            android:layout_gravity="end"
+            android:layout_height="match_parent">
+
+            <ToggleButton
+                android:id="@+id/toggleButtonIsFavorites"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                style="@style/toggleButton"
+                android:background="@drawable/ic_toggle_bg" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
