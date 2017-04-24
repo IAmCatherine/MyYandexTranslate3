@@ -1,31 +1,22 @@
 <resources>
-    <string name="app_name">Translate</string>
-
-    <!-- TranslateResponce Fragment -->
-    <string name="exampleWord">Hello</string>
+    <string name="app_name">Яндекс переводчик</string>
+    <string name="close">Закрыть</string>
+    <string name="inputLanguage">Язык ввода</string>
+    <string name="targetLanguage">Язык перевода</string>
     <string name="defaultLanguageFrom">Английский</string>
     <string name="defaultLanguageTo">Русский</string>
-    <string name="errorGetSupportLanguages">Не удалось получить список поддерживаемых языков.</string>
-    <string name="errorTranslate">Не удалось выполнить перевод. Проверьте подключение к сети.</string>
-    <string name="switchDirection">Переключить направление</string>
-
-    <!-- Favorites Fragment -->
-    <string name="history">История</string>
-    <string name="favorites">Избранное</string>
+    <string name="exampleWord">Введите свой текст</string>
     <string name="searchInHistory">Найти в истории</string>
     <string name="searchInFavorites">Найти в избранном</string>
+    <string name="history">История</string>
+    <string name="errorTranslate">Проверьте подключение к сети.</string>
     <string name="clearHistory">Очистить историю?</string>
     <string name="clear">Очистить</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+    <string name="favorites">Избранное</string>
+      <string name="titleSettingsFragment">Настройки</string>
 
-    <!-- Settings Fragment -->
-    <string name="titleSettingsFragment">Настройки</string>
-    <string name="disableDictionaryEntry">Не выводить словарную статью</string>
 
-    <!-- Choice Language Activity -->
-    <string name="close">Закрыть</string>
-    <string name="inputLanguage">Язык ввода</string>
-    <string name="targetLanguage">Язык перевода</string>
 
 </resources>

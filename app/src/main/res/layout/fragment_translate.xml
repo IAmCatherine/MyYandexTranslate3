@@ -33,7 +33,6 @@
             android:id="@+id/buttonSwitchDirection"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:contentDescription="@string/switchDirection"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/ic_switch"/>
 

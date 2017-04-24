@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,13 +87,28 @@ public class TranslateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
 
-        realm = Realm.getDefaultInstance();
 
         View rootView = inflater.inflate(R.layout.fragment_translate, container, false);
         unbinder = ButterKnife.bind(this, rootView);
+        realm = Realm.getDefaultInstance();
 
-        loadStateUIElements();
-        loadSupportLanguages();
+        if(languageFromState != null) {
+            setLanguageFrom(languageFromState.trim().isEmpty()?defaultLanguageFrom:languageFromState);
+        } else {
+            setLanguageFrom(defaultLanguageFrom);
+        }
+
+        if(languageToState != null) {
+            setLanguageTo(languageToState.trim().isEmpty()?defaultLanguageTo:languageToState);
+        } else {
+            setLanguageTo(defaultLanguageTo);
+        }
+
+        if(inputTextState != null) {
+            setInputText(inputTextState.trim().isEmpty() ? "" : inputTextState);
+        }
+
+        loadLanguages();
 
         translate();
 
@@ -214,13 +228,7 @@ public class TranslateFragment extends Fragment {
 
             });
         }
-
-        if(hasFocus) {
-            etInputText.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.background_edit_text_selected));
-        } else {
-            etInputText.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.background_edit_text));
-        }
-    }
+            }
 
     @OnClick({R.id.textViewTranslatedText, R.id.textViewDictionaryEntry})
     public void onClickTranslatedText(View v) {
@@ -250,7 +258,7 @@ public class TranslateFragment extends Fragment {
     }
 
     //загрузка языков
-    private void loadSupportLanguages() {
+    private void loadLanguages() {
 
         final RealmResults<Language> rlanguages = realm.where(Language.class).findAll();
         final RealmResults<Direction> rdirections = realm.where(Direction.class).findAll();
@@ -269,7 +277,7 @@ public class TranslateFragment extends Fragment {
                     }, new Consumer<Throwable>() {
                         @Override
                         public void accept(@NonNull Throwable throwable) throws Exception {
-                            Toast.makeText(getContext(), R.string.errorGetSupportLanguages, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), R.string.errorTranslate, Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
@@ -338,9 +346,7 @@ public class TranslateFragment extends Fragment {
 
                 RealmResults<Direction> rDirection = bgRealm.where(Direction.class).findAll();
                 rDirection.deleteAllFromRealm();
-                for (String entry: languagesResponce.getDirs()) {
-                    Direction direction = bgRealm.createObject(Direction.class, entry);
-                }
+
             }
         });
     }
@@ -354,27 +360,6 @@ public class TranslateFragment extends Fragment {
         }
         return "";
     }
-
-    private void loadStateUIElements() {
-
-        if(languageFromState != null) {
-            setLanguageFrom(languageFromState.trim().isEmpty()?defaultLanguageFrom:languageFromState);
-        } else {
-            setLanguageFrom(defaultLanguageFrom);
-        }
-
-        if(languageToState != null) {
-            setLanguageTo(languageToState.trim().isEmpty()?defaultLanguageTo:languageToState);
-        } else {
-            setLanguageTo(defaultLanguageTo);
-        }
-
-        if(inputTextState != null) {
-            setInputText(inputTextState.trim().isEmpty() ? "" : inputTextState);
-        }
-
-    }
-
 
 
     private String getLanguageFrom() {

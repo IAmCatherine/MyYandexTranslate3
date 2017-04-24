@@ -9,7 +9,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public class JsonYandex {
-
+    final static String TRANSLATE_KEY = "trnsl.1.1.20170327T074258Z.c68ee7e4540295d2.f2bd9c673bd22ffb2d06cde44d0862c40c3d8648";
+    final static String TRANSLATE_UI = "ru";
     private static Service translateService;
     public static Service getTranslateService() {
 
@@ -30,11 +31,11 @@ public class JsonYandex {
     }
 
     public static Observable<TranslateResponce> getTranslate(String direction, String text) {
-        return getTranslateService().getTranslate(Constant.TRANSLATE_KEY, direction, text);
+        return getTranslateService().getTranslate(TRANSLATE_KEY, direction, text);
     }
 
     public static Observable<LanguagesResponce> getSupportLanguages() {
-        return getTranslateService().getSupportLanguages(Constant.TRANSLATE_KEY, Constant.TRANSLATE_UI);
+        return getTranslateService().getSupportLanguages(TRANSLATE_KEY, TRANSLATE_UI);
     }
 
 

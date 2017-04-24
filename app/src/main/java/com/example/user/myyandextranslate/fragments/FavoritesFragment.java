@@ -62,9 +62,10 @@ public class FavoritesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
-        realm = Realm.getDefaultInstance();
+
 
         View rootView = inflater.inflate(R.layout.fragment_favorites, container, false);
+        realm = Realm.getDefaultInstance();
         unbinder = ButterKnife.bind(this, rootView);
 
         if(searchTextState != null) {
@@ -126,12 +127,7 @@ public class FavoritesFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        realm.close();
-        unbinder.unbind();
-    }
+
 
     @OnClick(R.id.buttonClearHistory)
     public void onClickClearHistory() {
@@ -185,5 +181,12 @@ public class FavoritesFragment extends Fragment {
 
     private String getSearchText() {
         return etSearch.getText().toString();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        realm.close();
+        unbinder.unbind();
     }
 }
